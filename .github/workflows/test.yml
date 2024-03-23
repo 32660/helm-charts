@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    
+
+jobs:
+  deploy:
+    name: DockerComposeDeploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: test docker compose
+      run: |
+        docker compose --version
+        cd docker-compose
+        bash run.sh
+        docker compose ps
